@@ -34,22 +34,22 @@ public class Autorennspiel extends javax.swing.JFrame {
         _btnBremsenSpB = new javax.swing.JButton();
         _btnBeschleunigenSpB = new javax.swing.JButton();
         _lblWetter = new javax.swing.JLabel();
-        panel1 = new java.awt.Panel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        panel2 = new java.awt.Panel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        _panelRennbahnSpA = new java.awt.Panel();
+        _lblAutoRot = new javax.swing.JLabel();
+        _lblZiellinieSpA = new javax.swing.JLabel();
+        _panelRennbahnSpB = new java.awt.Panel();
+        _lblAutoBlau = new javax.swing.JLabel();
+        _lblZiellinieSpB = new javax.swing.JLabel();
+        _panelSpA = new javax.swing.JPanel();
         _proBarTankSpA = new javax.swing.JProgressBar();
         _lblGeschwindigkeitSpB = new javax.swing.JLabel();
         _lblSpielerA = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        _lblTankImageSpA = new javax.swing.JLabel();
+        _panelSpB = new javax.swing.JPanel();
         _proBarTankSpB = new javax.swing.JProgressBar();
         _lblSpielerB = new javax.swing.JLabel();
         _lblGeschwindigkeitSpA = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        _lblTankImageSpB = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,60 +98,60 @@ public class Autorennspiel extends javax.swing.JFrame {
         _lblWetter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Sonne.png"))); // NOI18N
         _lblWetter.setText("Wetter");
 
-        panel1.setBackground(new java.awt.Color(204, 204, 204));
-        panel1.setForeground(new java.awt.Color(204, 204, 204));
+        _panelRennbahnSpA.setBackground(new java.awt.Color(204, 204, 204));
+        _panelRennbahnSpA.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/auto rot.png"))); // NOI18N
-        jLabel2.setToolTipText("");
+        _lblAutoRot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/auto rot.png"))); // NOI18N
+        _lblAutoRot.setToolTipText("");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flagge.png"))); // NOI18N
+        _lblZiellinieSpA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flagge.png"))); // NOI18N
 
-        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
-        panel1.setLayout(panel1Layout);
-        panel1Layout.setHorizontalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout _panelRennbahnSpALayout = new javax.swing.GroupLayout(_panelRennbahnSpA);
+        _panelRennbahnSpA.setLayout(_panelRennbahnSpALayout);
+        _panelRennbahnSpALayout.setHorizontalGroup(
+            _panelRennbahnSpALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(_panelRennbahnSpALayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(_lblAutoRot)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addComponent(jLabel4)
+            .addGroup(_panelRennbahnSpALayout.createSequentialGroup()
+                .addComponent(_lblZiellinieSpA)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        panel1Layout.setVerticalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addComponent(jLabel4)
+        _panelRennbahnSpALayout.setVerticalGroup(
+            _panelRennbahnSpALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelRennbahnSpALayout.createSequentialGroup()
+                .addComponent(_lblZiellinieSpA)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(_lblAutoRot)
                 .addContainerGap())
         );
 
-        panel2.setBackground(new java.awt.Color(204, 204, 204));
+        _panelRennbahnSpB.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/auto blau.png"))); // NOI18N
-        jLabel1.setToolTipText("");
+        _lblAutoBlau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/auto blau.png"))); // NOI18N
+        _lblAutoBlau.setToolTipText("");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flagge.png"))); // NOI18N
+        _lblZiellinieSpB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flagge.png"))); // NOI18N
 
-        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
-        panel2.setLayout(panel2Layout);
-        panel2Layout.setHorizontalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout _panelRennbahnSpBLayout = new javax.swing.GroupLayout(_panelRennbahnSpB);
+        _panelRennbahnSpB.setLayout(_panelRennbahnSpBLayout);
+        _panelRennbahnSpBLayout.setHorizontalGroup(
+            _panelRennbahnSpBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(_panelRennbahnSpBLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(_lblAutoBlau)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(_panelRennbahnSpBLayout.createSequentialGroup()
+                .addComponent(_lblZiellinieSpB, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        panel2Layout.setVerticalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                .addComponent(jLabel5)
+        _panelRennbahnSpBLayout.setVerticalGroup(
+            _panelRennbahnSpBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelRennbahnSpBLayout.createSequentialGroup()
+                .addComponent(_lblZiellinieSpB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(_lblAutoBlau)
                 .addContainerGap())
         );
 
@@ -161,25 +161,25 @@ public class Autorennspiel extends javax.swing.JFrame {
         _lblSpielerA.setForeground(new java.awt.Color(0, 0, 255));
         _lblSpielerA.setText("Spieler A");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tank.png"))); // NOI18N
+        _lblTankImageSpA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tank.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout _panelSpALayout = new javax.swing.GroupLayout(_panelSpA);
+        _panelSpA.setLayout(_panelSpALayout);
+        _panelSpALayout.setHorizontalGroup(
+            _panelSpALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(_panelSpALayout.createSequentialGroup()
+                .addGroup(_panelSpALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(_lblGeschwindigkeitSpB)
                     .addComponent(_lblSpielerA)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(_panelSpALayout.createSequentialGroup()
                         .addComponent(_proBarTankSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)))
+                        .addComponent(_lblTankImageSpA)))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        _panelSpALayout.setVerticalGroup(
+            _panelSpALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelSpALayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(_lblSpielerA)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -187,9 +187,9 @@ public class Autorennspiel extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(_proBarTankSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelSpALayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel6))
+                .addComponent(_lblTankImageSpA))
         );
 
         _lblSpielerB.setForeground(new java.awt.Color(0, 0, 255));
@@ -198,35 +198,35 @@ public class Autorennspiel extends javax.swing.JFrame {
         _lblGeschwindigkeitSpA.setForeground(new java.awt.Color(255, 0, 51));
         _lblGeschwindigkeitSpA.setText("Geschwindigkeit");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tank.png"))); // NOI18N
+        _lblTankImageSpB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tank.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout _panelSpBLayout = new javax.swing.GroupLayout(_panelSpB);
+        _panelSpB.setLayout(_panelSpBLayout);
+        _panelSpBLayout.setHorizontalGroup(
+            _panelSpBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(_panelSpBLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(_lblSpielerB))
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(_panelSpBLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel3)
+                .addComponent(_lblTankImageSpB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(_panelSpBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(_lblGeschwindigkeitSpA)
                     .addComponent(_proBarTankSpB, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        _panelSpBLayout.setVerticalGroup(
+            _panelSpBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(_panelSpBLayout.createSequentialGroup()
                 .addComponent(_lblSpielerB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(_lblGeschwindigkeitSpA)
                 .addGap(18, 18, 18)
                 .addComponent(_proBarTankSpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(13, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelSpBLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3))
+                .addComponent(_lblTankImageSpB))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -242,20 +242,20 @@ public class Autorennspiel extends javax.swing.JFrame {
                             .addComponent(_btnBremsenSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(_btnBeschleunigenSpA))
                         .addGap(55, 55, 55)
-                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(_panelRennbahnSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
-                        .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(_panelRennbahnSpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(_btnWeiterSpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(_btnBremsenSpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(_btnBeschleunigenSpB)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(_panelSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(104, 104, 104)
                         .addComponent(_lblWetter, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(_panelSpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -266,8 +266,8 @@ public class Autorennspiel extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(_panelSpA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(_panelSpB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -286,8 +286,8 @@ public class Autorennspiel extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(_btnBeschleunigenSpA))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(_panelRennbahnSpA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(_panelRennbahnSpB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(22, 22, 22))
         );
 
@@ -348,22 +348,22 @@ public class Autorennspiel extends javax.swing.JFrame {
     private javax.swing.JButton _btnBremsenSpB;
     private javax.swing.JButton _btnWeiterSpA;
     private javax.swing.JButton _btnWeiterSpB;
+    private javax.swing.JLabel _lblAutoBlau;
+    private javax.swing.JLabel _lblAutoRot;
     private javax.swing.JLabel _lblGeschwindigkeitSpA;
     private javax.swing.JLabel _lblGeschwindigkeitSpB;
     private javax.swing.JLabel _lblSpielerA;
     private javax.swing.JLabel _lblSpielerB;
+    private javax.swing.JLabel _lblTankImageSpA;
+    private javax.swing.JLabel _lblTankImageSpB;
     private javax.swing.JLabel _lblWetter;
+    private javax.swing.JLabel _lblZiellinieSpA;
+    private javax.swing.JLabel _lblZiellinieSpB;
+    private java.awt.Panel _panelRennbahnSpA;
+    private java.awt.Panel _panelRennbahnSpB;
+    private javax.swing.JPanel _panelSpA;
+    private javax.swing.JPanel _panelSpB;
     private javax.swing.JProgressBar _proBarTankSpA;
     private javax.swing.JProgressBar _proBarTankSpB;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private java.awt.Panel panel1;
-    private java.awt.Panel panel2;
     // End of variables declaration//GEN-END:variables
 }

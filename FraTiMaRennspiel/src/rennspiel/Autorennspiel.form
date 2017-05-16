@@ -33,9 +33,9 @@
                           <Component id="_btnBeschleunigenSpA" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="panel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="_panelRennbahnSpA" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="155" max="32767" attributes="0"/>
-                      <Component id="panel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="_panelRennbahnSpB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="_btnWeiterSpB" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -44,11 +44,11 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="_panelSpA" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                       <Component id="_lblWetter" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="_panelSpB" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -63,8 +63,8 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="_panelSpA" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="_panelSpB" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -90,8 +90,8 @@
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="panel1" max="32767" attributes="0"/>
-                      <Component id="panel2" max="32767" attributes="0"/>
+                      <Component id="_panelRennbahnSpA" max="32767" attributes="0"/>
+                      <Component id="_panelRennbahnSpB" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
@@ -180,7 +180,7 @@
         <Property name="text" type="java.lang.String" value="Wetter"/>
       </Properties>
     </Component>
-    <Container class="java.awt.Panel" name="panel1">
+    <Container class="java.awt.Panel" name="_panelRennbahnSpA">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -195,11 +195,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="_lblAutoRot" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <Component id="_lblZiellinieSpA" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -207,16 +207,16 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <Component id="_lblZiellinieSpA" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="286" max="32767" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="_lblAutoRot" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="_lblAutoRot">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/auto rot.png"/>
@@ -224,7 +224,7 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="_lblZiellinieSpA">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/flagge.png"/>
@@ -233,7 +233,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="java.awt.Panel" name="panel2">
+    <Container class="java.awt.Panel" name="_panelRennbahnSpB">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -245,11 +245,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="_lblAutoBlau" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jLabel5" min="-2" pref="146" max="-2" attributes="0"/>
+                  <Component id="_lblZiellinieSpB" min="-2" pref="146" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -257,16 +257,16 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                  <Component id="_lblZiellinieSpB" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="_lblAutoBlau" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="_lblAutoBlau">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/auto blau.png"/>
@@ -274,7 +274,7 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="_lblZiellinieSpB">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/flagge.png"/>
@@ -283,7 +283,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="_panelSpA">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -295,7 +295,7 @@
                       <Group type="102" attributes="0">
                           <Component id="_proBarTankSpA" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="_lblTankImageSpA" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
@@ -315,7 +315,7 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                  <Component id="_lblTankImageSpA" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -339,7 +339,7 @@
             <Property name="text" type="java.lang.String" value="Spieler A"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="_lblTankImageSpA">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/tank.png"/>
@@ -348,7 +348,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Container class="javax.swing.JPanel" name="_panelSpB">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -359,7 +359,7 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="_lblTankImageSpB" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="_lblGeschwindigkeitSpA" min="-2" max="-2" attributes="0"/>
@@ -380,7 +380,7 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="_lblTankImageSpB" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -404,7 +404,7 @@
             <Property name="text" type="java.lang.String" value="Geschwindigkeit"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="_lblTankImageSpB">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/tank.png"/>
