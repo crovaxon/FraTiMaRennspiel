@@ -2,11 +2,62 @@
 
 <ClassDiagram name="KlassendiagrammRennspiel">
   <ClassDiagramComponents>
-    <Class name="Auto" package="" visibility="public" xPosition="150.0" yPosition="111.0">
-      <Fields/>
+    <Class name="Auto" package="rennspiel" visibility="public" xPosition="163.0" yPosition="409.0">
+      <Fields>
+        <Field name="geschwindigkeit" type="float" visibility="private"/>
+        <Field name="tank" type="float" visibility="private"/>
+        <Field name="verbrauch" type="float" visibility="private"/>
+      </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="beschleunigen" returnType="void" visibility="public">
+          <Argument type="Wetter" name="pAktuellesWetter"/>
+        </Method>
+        <Method name="bremsen" returnType="void" visibility="public">
+          <Argument type="Wetter" name="pAktuellesWetter"/>
+        </Method>
+        <Method name="weiter" returnType="void" visibility="public">
+          <Argument type="Wetter" name="pAktuellesWetter"/>
+        </Method>
+        <Method name="getGeschwindigkeit" returnType="float" visibility="public"/>
+        <Method name="getTank" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Spiel" package="rennspiel" visibility="public" xPosition="233.0" yPosition="17.0">
+      <Fields>
+        <Field name="spieler1" type="Spieler" visibility="private"/>
+        <Field name="spieler2" type="Spieler" visibility="private"/>
+        <Field name="aktuellesWetter" type="Wetter" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="bestimmeWetter" returnType="void" visibility="public"/>
+        <Method name="gewonnen" returnType="bool" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="Wetter" package="rennspiel" visibility="public" xPosition="21.0" yPosition="211.0">
+      <Literals>
+        <Literal name="SONNIG"/>
+        <Literal name="BEWOELKT"/>
+        <Literal name="REGEN"/>
+        <Literal name="GLAETTE"/>
+      </Literals>
+    </Enum>
+    <Class name="Spieler" package="rennspiel" visibility="public" xPosition="481.0" yPosition="205.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="auto" type="Auto" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="SetName" returnType="void" visibility="public"/>
+        <Method name="GetName" returnType="String" visibility="public"/>
+      </Methods>
     </Class>
   </ClassDiagramComponents>
-  <ClassDiagramRelations/>
+  <ClassDiagramRelations>
+    <HasRelation name="hat" source="rennspiel.Spiel" target="rennspiel.Spieler" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="hat" source="rennspiel.Spiel" target="rennspiel.Wetter" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="hat" source="rennspiel.Spieler" target="rennspiel.Auto" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
 </ClassDiagram>
