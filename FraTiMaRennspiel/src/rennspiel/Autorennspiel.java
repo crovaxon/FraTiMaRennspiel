@@ -5,17 +5,30 @@
  */
 package rennspiel;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bbsuser
  */
-public class Autorennspiel extends javax.swing.JFrame {
+public class Autorennspiel extends javax.swing.JFrame implements RundenListener {
+
+    private final StartPage startPage;
+    private final Spiel spiel;
+    private boolean spielerAFertig = false;
+    private boolean spielerBFertig = false;
+    private Aktion spielerAAktion;
+    private Aktion spielerBAktion;
 
     /**
      * Creates new form Autorennspiel
      */
     public Autorennspiel() {
         initComponents();
+        startPage = new StartPage();
+        startPage.setAutorennspiel(this);
+        startPage.setVisible(true);
+        spiel = new Spiel(_lblSpielerA.getText(), _lblSpielerB.getText(), 100);
     }
 
     /**
@@ -35,11 +48,9 @@ public class Autorennspiel extends javax.swing.JFrame {
         _btnBeschleunigenSpB = new javax.swing.JButton();
         _lblWetter = new javax.swing.JLabel();
         _panelRennbahnSpA = new java.awt.Panel();
-        _lblAutoRot = new javax.swing.JLabel();
-        _lblZiellinieSpA = new javax.swing.JLabel();
+        _lblAutoARot = new javax.swing.JLabel();
         _panelRennbahnSpB = new java.awt.Panel();
-        _lblAutoBlau = new javax.swing.JLabel();
-        _lblZiellinieSpB = new javax.swing.JLabel();
+        _lblAutoBBlau = new javax.swing.JLabel();
         _panelSpA = new javax.swing.JPanel();
         _proBarTankSpA = new javax.swing.JProgressBar();
         _lblGeschwindigkeitSpB = new javax.swing.JLabel();
@@ -50,6 +61,8 @@ public class Autorennspiel extends javax.swing.JFrame {
         _lblSpielerB = new javax.swing.JLabel();
         _lblGeschwindigkeitSpA = new javax.swing.JLabel();
         _lblTankImageSpB = new javax.swing.JLabel();
+        _lblZiellinieSpA = new javax.swing.JLabel();
+        _lblZiellinieSpB = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +80,11 @@ public class Autorennspiel extends javax.swing.JFrame {
         _btnBremsenSpA.setMaximumSize(new java.awt.Dimension(101, 23));
         _btnBremsenSpA.setMinimumSize(new java.awt.Dimension(101, 23));
         _btnBremsenSpA.setPreferredSize(new java.awt.Dimension(101, 23));
+        _btnBremsenSpA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _btnBremsenSpAActionPerformed(evt);
+            }
+        });
 
         _btnBeschleunigenSpA.setText("Beschleunigen");
         _btnBeschleunigenSpA.setFocusPainted(false);
@@ -90,70 +108,41 @@ public class Autorennspiel extends javax.swing.JFrame {
         _btnBremsenSpB.setMaximumSize(new java.awt.Dimension(101, 23));
         _btnBremsenSpB.setMinimumSize(new java.awt.Dimension(101, 23));
         _btnBremsenSpB.setPreferredSize(new java.awt.Dimension(101, 23));
+        _btnBremsenSpB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _btnBremsenSpBActionPerformed(evt);
+            }
+        });
 
         _btnBeschleunigenSpB.setText("Beschleunigen");
         _btnBeschleunigenSpB.setFocusPainted(false);
+        _btnBeschleunigenSpB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _btnBeschleunigenSpBActionPerformed(evt);
+            }
+        });
 
-        _lblWetter.setForeground(new java.awt.Color(0, 255, 51));
+        _lblWetter.setForeground(new java.awt.Color(0, 204, 0));
         _lblWetter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Sonne.png"))); // NOI18N
-        _lblWetter.setText("Wetter");
+        _lblWetter.setText("Sonnig");
 
         _panelRennbahnSpA.setBackground(new java.awt.Color(204, 204, 204));
         _panelRennbahnSpA.setForeground(new java.awt.Color(204, 204, 204));
+        _panelRennbahnSpA.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        _lblAutoRot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/auto rot.png"))); // NOI18N
-        _lblAutoRot.setToolTipText("");
-
-        _lblZiellinieSpA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flagge.png"))); // NOI18N
-
-        javax.swing.GroupLayout _panelRennbahnSpALayout = new javax.swing.GroupLayout(_panelRennbahnSpA);
-        _panelRennbahnSpA.setLayout(_panelRennbahnSpALayout);
-        _panelRennbahnSpALayout.setHorizontalGroup(
-            _panelRennbahnSpALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(_panelRennbahnSpALayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(_lblAutoRot)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(_panelRennbahnSpALayout.createSequentialGroup()
-                .addComponent(_lblZiellinieSpA)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        _panelRennbahnSpALayout.setVerticalGroup(
-            _panelRennbahnSpALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelRennbahnSpALayout.createSequentialGroup()
-                .addComponent(_lblZiellinieSpA)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, Short.MAX_VALUE)
-                .addComponent(_lblAutoRot)
-                .addContainerGap())
-        );
+        _lblAutoARot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/auto rot.png"))); // NOI18N
+        _lblAutoARot.setToolTipText("");
+        _lblAutoARot.setDoubleBuffered(true);
+        _panelRennbahnSpA.add(_lblAutoARot, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, -1));
 
         _panelRennbahnSpB.setBackground(new java.awt.Color(204, 204, 204));
+        _panelRennbahnSpB.setForeground(new java.awt.Color(204, 204, 204));
+        _panelRennbahnSpB.setName(""); // NOI18N
+        _panelRennbahnSpB.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        _lblAutoBlau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/auto blau.png"))); // NOI18N
-        _lblAutoBlau.setToolTipText("");
-
-        _lblZiellinieSpB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flagge.png"))); // NOI18N
-
-        javax.swing.GroupLayout _panelRennbahnSpBLayout = new javax.swing.GroupLayout(_panelRennbahnSpB);
-        _panelRennbahnSpB.setLayout(_panelRennbahnSpBLayout);
-        _panelRennbahnSpBLayout.setHorizontalGroup(
-            _panelRennbahnSpBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(_panelRennbahnSpBLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(_lblAutoBlau)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(_panelRennbahnSpBLayout.createSequentialGroup()
-                .addComponent(_lblZiellinieSpB, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        _panelRennbahnSpBLayout.setVerticalGroup(
-            _panelRennbahnSpBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, _panelRennbahnSpBLayout.createSequentialGroup()
-                .addComponent(_lblZiellinieSpB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(_lblAutoBlau)
-                .addContainerGap())
-        );
+        _lblAutoBBlau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/auto blau.png"))); // NOI18N
+        _lblAutoBBlau.setToolTipText("");
+        _panelRennbahnSpB.add(_lblAutoBBlau, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, -1));
 
         _lblGeschwindigkeitSpB.setForeground(new java.awt.Color(255, 0, 51));
         _lblGeschwindigkeitSpB.setText("Geschwindigkeit");
@@ -229,6 +218,10 @@ public class Autorennspiel extends javax.swing.JFrame {
                 .addComponent(_lblTankImageSpB))
         );
 
+        _lblZiellinieSpA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flagge.png"))); // NOI18N
+
+        _lblZiellinieSpB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flagge.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -241,18 +234,22 @@ public class Autorennspiel extends javax.swing.JFrame {
                             .addComponent(_btnWeiterSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(_btnBremsenSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(_btnBeschleunigenSpA))
-                        .addGap(55, 55, 55)
-                        .addComponent(_panelRennbahnSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
-                        .addComponent(_panelRennbahnSpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(_panelRennbahnSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(_lblZiellinieSpA, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(_lblZiellinieSpB, javax.swing.GroupLayout.PREFERRED_SIZE, 128, Short.MAX_VALUE)
+                            .addComponent(_panelRennbahnSpB, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(_btnWeiterSpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(_btnBremsenSpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(_btnBeschleunigenSpB)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(_panelSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104)
+                        .addGap(30, 30, 30)
                         .addComponent(_lblWetter, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(_panelSpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -268,10 +265,9 @@ public class Autorennspiel extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(_panelSpA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(_panelSpB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(355, 355, 355)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(_btnWeiterSpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,10 +280,17 @@ public class Autorennspiel extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(_btnBremsenSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(_btnBeschleunigenSpA))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(_panelRennbahnSpA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(_panelRennbahnSpB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(_btnBeschleunigenSpA)))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(_lblZiellinieSpA)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(_lblZiellinieSpB)
+                                .addGap(0, 0, 0)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(_panelRennbahnSpA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(_panelRennbahnSpB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(22, 22, 22))
         );
 
@@ -295,16 +298,40 @@ public class Autorennspiel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void _btnWeiterSpAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__btnWeiterSpAActionPerformed
-        
+        spielerAAktion = Aktion.WEITER;
+        spielerAFertig = true;
+        RundeFahren();
     }//GEN-LAST:event__btnWeiterSpAActionPerformed
 
     private void _btnWeiterSpBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__btnWeiterSpBActionPerformed
-        
+        spielerBAktion = Aktion.WEITER;
+        spielerBFertig = true;
+        RundeFahren();
     }//GEN-LAST:event__btnWeiterSpBActionPerformed
 
     private void _btnBeschleunigenSpAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__btnBeschleunigenSpAActionPerformed
-        
+        spielerAAktion = Aktion.BESCHLEUNIGEN;
+        spielerAFertig = true;
+        RundeFahren();
     }//GEN-LAST:event__btnBeschleunigenSpAActionPerformed
+
+    private void _btnBeschleunigenSpBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__btnBeschleunigenSpBActionPerformed
+        spielerBAktion = Aktion.BESCHLEUNIGEN;
+        spielerBFertig = true;
+        RundeFahren();
+    }//GEN-LAST:event__btnBeschleunigenSpBActionPerformed
+
+    private void _btnBremsenSpAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__btnBremsenSpAActionPerformed
+        spielerAAktion = Aktion.BREMSEN;
+        spielerAFertig = true;
+        RundeFahren();
+    }//GEN-LAST:event__btnBremsenSpAActionPerformed
+
+    private void _btnBremsenSpBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__btnBremsenSpBActionPerformed
+        spielerBAktion = Aktion.BREMSEN;
+        spielerBFertig = true;
+        RundeFahren();
+    }//GEN-LAST:event__btnBremsenSpBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,23 +349,39 @@ public class Autorennspiel extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Autorennspiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Autorennspiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Autorennspiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Autorennspiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Autorennspiel().setVisible(true);
+                new Autorennspiel().setVisible(false);
             }
         });
+    }
+
+    public void SetSpielerNamen(String pSpielerA, String pSpielerB) {
+        this._lblSpielerA.setText(pSpielerA);
+        this._lblSpielerB.setText(pSpielerB);
+    }
+
+    public String getSpielernameA() {
+        return this._lblSpielerA.getText();
+    }
+
+    public String getSpielernameB() {
+        return this._lblSpielerB.getText();
+    }
+
+    private void RundeFahren() {
+        if (spielerAFertig && spielerBFertig) {
+            spiel.Fahren(spielerAAktion, spielerBAktion);
+            spielerAFertig = spielerBFertig = false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -348,8 +391,8 @@ public class Autorennspiel extends javax.swing.JFrame {
     private javax.swing.JButton _btnBremsenSpB;
     private javax.swing.JButton _btnWeiterSpA;
     private javax.swing.JButton _btnWeiterSpB;
-    private javax.swing.JLabel _lblAutoBlau;
-    private javax.swing.JLabel _lblAutoRot;
+    private javax.swing.JLabel _lblAutoARot;
+    private javax.swing.JLabel _lblAutoBBlau;
     private javax.swing.JLabel _lblGeschwindigkeitSpA;
     private javax.swing.JLabel _lblGeschwindigkeitSpB;
     private javax.swing.JLabel _lblSpielerA;
@@ -366,4 +409,18 @@ public class Autorennspiel extends javax.swing.JFrame {
     private javax.swing.JProgressBar _proBarTankSpA;
     private javax.swing.JProgressBar _proBarTankSpB;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void advertisement(RundenEvent e) {
+        this._lblGeschwindigkeitSpA.setText("Geschwindigkeit" + e.getGeschwindigkeitSpielerA() + " km/h");
+        this._lblGeschwindigkeitSpB.setText("Geschwindigkeit" + e.getGeschwindigkeitSpielerB() + " km/h");
+        this._proBarTankSpA.setValue((int) e.getTankA());
+        this._proBarTankSpB.setValue((int) e.getTankB());
+        int panelAHeight = this._panelRennbahnSpA.getSize().height;
+        
+        if (e.isSpielersieg()) {
+            JOptionPane.showMessageDialog(rootPane, "Sieger:\n" + e.getGewinner(), "Gratulation!", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        }
+    }
 }

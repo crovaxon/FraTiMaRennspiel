@@ -11,11 +11,16 @@ package rennspiel;
  */
 public class StartPage extends javax.swing.JFrame {
 
+    private Autorennspiel autorennspiel;
+
+    public void setAutorennspiel(Autorennspiel autorennspiel) {
+        this.autorennspiel = autorennspiel;
+    }
     /**
      * Creates new form StartPage
      */
     public StartPage() {
-        initComponents();
+        initComponents();        
     }
 
     /**
@@ -37,6 +42,11 @@ public class StartPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         _btnStart.setText("Start");
+        _btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _btnStartActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Name Spieler A:");
 
@@ -47,6 +57,11 @@ public class StartPage extends javax.swing.JFrame {
         _tfNameSpB.setText("Name");
 
         _btnAbbrechen.setText("Abbrechen");
+        _btnAbbrechen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _btnAbbrechenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +107,17 @@ public class StartPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void _btnAbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__btnAbbrechenActionPerformed
+        autorennspiel.dispose();
+        this.dispose();
+    }//GEN-LAST:event__btnAbbrechenActionPerformed
+
+    private void _btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__btnStartActionPerformed
+        autorennspiel.SetSpielerNamen(_tfNameSpA.getText(), _tfNameSpB.getText());
+        autorennspiel.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event__btnStartActionPerformed
 
     /**
      * @param args the command line arguments
