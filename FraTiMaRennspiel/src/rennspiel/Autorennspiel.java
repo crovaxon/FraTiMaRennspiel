@@ -5,8 +5,6 @@
  */
 package rennspiel;
 
-import com.sun.javafx.iio.ImageStorage;
-import java.awt.Point;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -430,7 +428,6 @@ public class Autorennspiel extends javax.swing.JFrame implements RundenListener 
         double positionSpielerA = panelStrecke * spielerAGefahreneStrecke;
         double spielerBGefahreneStrecke = e.getGefahreneStreckeB() / streckenLaenge;
         double positionSpielerB = panelStrecke * spielerBGefahreneStrecke;
-        Point pA = _lblAutoARot.getLocation();
         _lblAutoARot.setLocation(0, panelStrecke - (int) positionSpielerA);
         _lblAutoBBlau.setLocation(0, panelStrecke - (int) positionSpielerB);
         switch (e.getWetter()) {
@@ -456,6 +453,7 @@ public class Autorennspiel extends javax.swing.JFrame implements RundenListener 
         this.repaint();
         if (e.isSpielersieg()) {
             JOptionPane.showMessageDialog(rootPane, "Sieger:\n" + e.getGewinner(), "Gratulation!", JOptionPane.INFORMATION_MESSAGE);
+            spiel.removeRundenListener(this);
             this.dispose();
         }
     }
