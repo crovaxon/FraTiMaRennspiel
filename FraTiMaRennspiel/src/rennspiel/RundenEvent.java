@@ -16,11 +16,19 @@ public class RundenEvent extends EventObject {
     private boolean spielersieg;
     private String gewinner;
     private float geschwindigkeitSpielerA, geschwindigkeitSpielerB, tankA, tankB, gefahreneStreckeA, gefahreneStreckeB;
-
-    public RundenEvent(boolean spielersieg, String gewinner, float geschwindigkeitSpielerA, float geschwindigkeitSpielerB, float tankA, float tankB, float gefahreneStreckeA, float gefahreneStreckeB, Object source) {
+    private Wetter wetter;
+    
+    public RundenEvent(boolean spielersieg, String gewinner, float geschwindigkeitSpielerA, float geschwindigkeitSpielerB, float tankA, float tankB, float gefahreneStreckeA, float gefahreneStreckeB, Wetter wetter, Object source) {
         super(source);
         this.spielersieg = spielersieg;
         this.gewinner = gewinner;
+        this.geschwindigkeitSpielerA = geschwindigkeitSpielerA;
+        this.geschwindigkeitSpielerB = geschwindigkeitSpielerB;
+        this.tankA = tankA;
+        this.tankB = tankB;
+        this.gefahreneStreckeA = gefahreneStreckeA;
+        this.gefahreneStreckeB = gefahreneStreckeB;
+        this.wetter = wetter;
     }
 
     public boolean isSpielersieg() {
@@ -53,6 +61,10 @@ public class RundenEvent extends EventObject {
 
     public float getGefahreneStreckeB() {
         return gefahreneStreckeB;
+    }
+
+    public Wetter getWetter() {
+        return wetter;
     }
     
 }

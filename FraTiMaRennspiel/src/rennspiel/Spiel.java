@@ -5,7 +5,6 @@ import javax.swing.event.EventListenerList;
 
 public class Spiel {
 
-    private Autorennspiel autorennspiel;
     private Spieler spielerA;
     private Spieler spielerB;
     private float streckenlaenge;
@@ -76,13 +75,8 @@ public class Spiel {
             }
         }
         bestimmeWetter();
-        notifyRunde(new RundenEvent(spielersieg, gewinner,spielerA.getAuto().getGeschwindigkeit(), spielerB.getAuto().getGeschwindigkeit(), spielerA.getAuto().getTank(), spielerB.getAuto().getTank(), gefahreneStreckeSpielerA, gefahreneStreckeSpielerB, this));
+        notifyRunde(new RundenEvent(spielersieg, gewinner,spielerA.getAuto().getGeschwindigkeit(), spielerB.getAuto().getGeschwindigkeit(), spielerA.getAuto().getTank(), spielerB.getAuto().getTank(), gefahreneStreckeSpielerA, gefahreneStreckeSpielerB, aktuellesWetter, this));
     }
-
-    public void setAutorennspiel(Autorennspiel autorennspiel) {
-        this.autorennspiel = autorennspiel;
-    }
-
     public void bestimmeWetter() {
         if (rnd.nextInt(100) < wetterWechselChance) {
             switch (aktuellesWetter) {
@@ -109,8 +103,13 @@ public class Spiel {
                     }
                     break;
                 default: //GLAETTE
-                    aktuellesWetter = Wetter.REGEN;
-                    wetterWechselChance = 0;
+                    if (rnd.nextInt(50) < 50) {
+                        aktuellesWetter = Wetter.REGEN;
+                        wetterWechselChance = 0; 
+                    } else {
+                        aktuellesWetter = Wetter.BEWOELKT;
+                        wetterWechselChance = 0;
+                    }
                     break;
             }
         }
@@ -129,9 +128,5 @@ public class Spiel {
         for (RundenListener l : listeners.getListeners(RundenListener.class)) {
             l.advertisement(event);
         }
-    }
-
-    public boolean gewonnen() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
